@@ -12,12 +12,11 @@ public class Cliente implements CheckT {
   private Double multa;
   private long[] livros;
 
-  public Cliente(long idUnico, String nome, String telefone, Date nascimento, Double multa) {
+  public Cliente(long idUnico, String nome, String telefone, Date nascimento) {
     this.idUnico = idUnico;
     this.nome = nome;
     this.telefone = telefone;
     this.nascimento = nascimento;
-    this.multa = multa;
   }
 
   // Interface de checagem

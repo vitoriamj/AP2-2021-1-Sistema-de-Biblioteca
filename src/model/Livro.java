@@ -13,23 +13,16 @@ public class Livro {
 
   public long diasDeAtraso() {
     long diferenca = new Date().getTime() - data.getTime();
-
-    long dias = (diferenca / (1000 * 60 * 60 * 24)) % 365;
-    return dias;
+    return (diferenca / (1000 * 60 * 60 * 24)) % 365;
   }
 
   // CONSTRUTORES
 
-  public Livro() {
-  }
-
-  public Livro(long id, String nome, String autor, int edicao, boolean isAlugado, Date data) {
+  public Livro(long id, String nome, String autor, int edicao) {
     this.id = id;
     this.nome = nome;
     this.autor = autor;
     this.edicao = edicao;
-    this.isAlugado = isAlugado;
-    this.data = data;
   }
 
   // GETTERS E SETTERS
