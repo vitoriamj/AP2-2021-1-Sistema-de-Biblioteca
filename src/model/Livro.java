@@ -1,4 +1,4 @@
-package entities;
+package model;
 
 import java.util.*;
 
@@ -6,13 +6,10 @@ public class Livro {
   private long id;
   private String nome;
   private String autor;
-  private String editora;
   private int edicao;
-  private int periodo; // periodo em dias
-  private int atraso; // dias de atraso na entrega
   private boolean isAlugado;
-  private boolean isMaiorDeIdade; // eh para maiores de idade
-  private Date data;
+  private Date data; // data em que foi alugado
+  private final int periodo = 30; // periodo que o livro pode ser alugado em dias
 
   public long diasDeAtraso() {
     long diferenca = new Date().getTime() - data.getTime();
@@ -26,17 +23,12 @@ public class Livro {
   public Livro() {
   }
 
-  public Livro(long id, String nome, String autor, String editora, int edicao, int periodo, int atraso,
-      boolean isAlugado, boolean isMaiorDeIdade, Date data) {
+  public Livro(long id, String nome, String autor, int edicao, boolean isAlugado, Date data) {
     this.id = id;
     this.nome = nome;
     this.autor = autor;
-    this.editora = editora;
     this.edicao = edicao;
-    this.periodo = periodo;
-    this.atraso = atraso;
     this.isAlugado = isAlugado;
-    this.isMaiorDeIdade = isMaiorDeIdade;
     this.data = data;
   }
 
@@ -62,14 +54,6 @@ public class Livro {
     return autor;
   }
 
-  public void setEditora(String editora) {
-    this.editora = editora;
-  }
-
-  public String getEditora() {
-    return editora;
-  }
-
   public void setEdicao(int edicao) {
     this.edicao = edicao;
   }
@@ -78,20 +62,8 @@ public class Livro {
     return edicao;
   }
 
-  public void setPeriodo(int periodo) {
-    this.periodo = periodo;
-  }
-
   public int getPeriodo() {
     return periodo;
-  }
-
-  public void setAtraso(int atraso) {
-    this.atraso = atraso;
-  }
-
-  public int getAtraso() {
-    return atraso;
   }
 
   public void setIsAlugado(boolean isAlugado) {
@@ -100,14 +72,6 @@ public class Livro {
 
   public boolean getIsAlugado() {
     return isAlugado;
-  }
-
-  public void setIsMaiorDeIdade(boolean isMaiorDeIdade) {
-    this.isMaiorDeIdade = isMaiorDeIdade;
-  }
-
-  public boolean getIsMaiorDeIdade() {
-    return isMaiorDeIdade;
   }
 
   public Date getData() {

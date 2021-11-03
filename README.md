@@ -13,13 +13,10 @@ O projeto desenvolvido permitirá o cadastro do catálogo e acesso de todos os l
   - `long` ID único;
   - `String` Nome;
   - `String` Autor;
-  - `String` Editora;
   - `int` Edição;
-  - `int` Período de aluguel;
+  - `int` Período de aluguel -> Constante para todos os aluguéis;
   - `Date || null` Data de aluguel: null caso não esteja alugado;
-  - `int` Dias de atraso;
   - `Boolean` Está alugado?;
-  - `Boolean` É para maiores de dezoito anos?;
 
 - Métodos:
   - Getters e setters;
@@ -34,7 +31,7 @@ O projeto desenvolvido permitirá o cadastro do catálogo e acesso de todos os l
   - `String` Telefone;
   - `Date` Data de nascimento;
   - `Double` Multa: R$ 1.00 a cada dia de atraso;
-  - `long array` Livros alugados: array de ID's dos livros, sendo que pode estar vazia (nenhum livro alugado) ou até 3 livros;
+  - `long array` Livros alugados: array de ID's dos livros;
 
 - Métodos:
   - Getters e setters;
@@ -46,7 +43,7 @@ O projeto desenvolvido permitirá o cadastro do catálogo e acesso de todos os l
 
 ### Interfaces
 
-- Checagem de cada entrada de dados;
+- Checagem;
 - Método abstrato de avisar quando está próximo do vencimento da data de aluguel;
 
 ### Controller
