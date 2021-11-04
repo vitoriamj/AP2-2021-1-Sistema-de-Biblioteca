@@ -9,15 +9,12 @@ public class LivroController {
   Scanner sc = new Scanner(System.in);
   ArrayList<Livro> estoqueDeLivros = new ArrayList<>();
 
-  public LivroController() {
 
+  public void run(){
     do {
       new LivroMenu();
       int choice = sc.nextInt();
       if (choice == 1) {
-        System.out.print("Digite o ID único do livro (apenas inteiros): ");
-        sc.nextLine();
-        long idCadastrado = sc.nextLong();
         System.out.print("Digite o nome do livro: ");
         sc.nextLine();
         String nomeCadastrado = sc.nextLine();
@@ -26,7 +23,7 @@ public class LivroController {
         System.out.print("Digite a edição do livro (apenas inteiros): ");
         int edicaoCadastrada = sc.nextInt();
 
-        Livro novoLivro = new Livro(idCadastrado, nomeCadastrado, autorCadastrado, edicaoCadastrada);
+        Livro novoLivro = new Livro(nomeCadastrado, autorCadastrado, edicaoCadastrada);
         estoqueDeLivros.add(novoLivro);
 
         System.out.println("Livro cadastrado!");

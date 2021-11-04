@@ -5,7 +5,6 @@ import java.text.*;
 
 public class Livro {
   SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-  private long id;
   private String nome;
   private String autor;
   private int edicao;
@@ -13,29 +12,15 @@ public class Livro {
   private Date data; // data em que foi alugado
   private final int periodo = 30; // periodo que o livro pode ser alugado em dias
 
-  // public long tempoAlugado() {
-  // long diferenca = new Date().getTime() - data.getTime();
-  // return (diferenca / (1000 * 60 * 60 * 24)) % 365;
-  // }
-
-  // public long calculoAtraso(){
-  // long tempo = tempoAlugado() - periodo;
-  // }
-
   // CONSTRUTORES
 
-  public Livro(long id, String nome, String autor, int edicao) {
-    this.id = id;
+  public Livro(String nome, String autor, int edicao) {
     this.nome = nome;
     this.autor = autor;
     this.edicao = edicao;
   }
 
   // GETTERS E SETTERS
-
-  public long getId() {
-    return id;
-  }
 
   public void setNome(String nome) {
     this.nome = nome;
@@ -86,7 +71,6 @@ public class Livro {
     StringBuilder sb = new StringBuilder();
 
     sb.append("\nNome: " + nome + "\n");
-    sb.append("ID: " + id + "\n");
     sb.append("Autor: " + autor + "\n");
     sb.append("Edição: " + edicao + "\n");
 

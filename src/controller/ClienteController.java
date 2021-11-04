@@ -11,15 +11,11 @@ public class ClienteController {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     ArrayList<Cliente> listaClientes = new ArrayList<>();
 
-    public ClienteController() throws ParseException {
-
+    public void run() throws ParseException{
         do {
             new ClienteMenu();
             int choice = sc.nextInt();
             if (choice == 1) {
-                System.out.print("Digite o ID único do(a) cliente (apenas números): ");
-                sc.nextLine();
-                long idCadastrado = sc.nextLong();
                 System.out.print("Digite o nome do(a) cliente: ");
                 sc.nextLine();
                 String nomeCadastrado = sc.nextLine();
@@ -28,7 +24,7 @@ public class ClienteController {
                 System.out.print("Digite a data de nascimento do(a) cliente (dd/mm/aaaa): ");
                 Date dataNascCadastrada = sdf.parse(sc.next());
 
-                Cliente novoCliente = new Cliente(idCadastrado, nomeCadastrado, telefoneCadastrado, dataNascCadastrada);
+                Cliente novoCliente = new Cliente(nomeCadastrado, telefoneCadastrado, dataNascCadastrada);
                 listaClientes.add(novoCliente);
 
                 System.out.println("Cliente cadastrado!");
@@ -64,7 +60,7 @@ public class ClienteController {
     }
 
     protected Cliente searchCliente(String nomePesquisado) {
-        for (int i = 0; i <= listaClientes.size() - 1; i++) {
+        for (int i = 0; i <=listaClientes.size() - 1; i++) {
             Cliente tempCliente = listaClientes.get(i);
             if (nomePesquisado.equals(tempCliente.getNome())) {
                 return tempCliente;

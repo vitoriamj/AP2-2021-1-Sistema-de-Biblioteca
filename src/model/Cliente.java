@@ -8,15 +8,12 @@ import model.interfaces.CheckT;
 public class Cliente implements CheckT {
   SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-  private long idUnico;
   private String nome;
   private String telefone;
   private Date nascimento;
-  private Double multa = 0.0;
   private long[] livros;
 
-  public Cliente(long idUnico, String nome, String telefone, Date nascimento) {
-    this.idUnico = idUnico;
+  public Cliente(String nome, String telefone, Date nascimento) {
     this.nome = nome;
     this.telefone = telefone;
     this.nascimento = nascimento;
@@ -37,10 +34,6 @@ public class Cliente implements CheckT {
     return true;
   }
 
-  public long getIdUnico() {
-    return idUnico;
-  }
-
   public String getNome() {
     return nome;
   }
@@ -55,14 +48,6 @@ public class Cliente implements CheckT {
 
   public Date getNascimento() {
     return nascimento;
-  }
-
-  public double getMulta() {
-    return multa;
-  }
-
-  public void setMulta(double multa) {
-    this.multa = multa;
   }
 
   public void setLivros(long[] livros) {
@@ -86,10 +71,8 @@ public class Cliente implements CheckT {
     StringBuilder sb = new StringBuilder();
 
     sb.append("\nNome: " + nome + "\n");
-    sb.append("ID: " + idUnico + "\n");
     sb.append("Telefone: " + telefone + "\n");
     sb.append("Nascimento: " + sdf.format(nascimento) + "\n");
-    sb.append("Multa: R$" + String.format("%.2f", multa) + "\n");
 
     if (livros != null) {
 
