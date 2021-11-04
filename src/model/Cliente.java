@@ -1,15 +1,18 @@
 package model;
 
 import java.util.*;
+import java.text.*;
 
 import model.interfaces.CheckT;
 
 public class Cliente implements CheckT {
+  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
   private long idUnico;
   private String nome;
   private String telefone;
   private Date nascimento;
-  private Double multa;
+  private Double multa = 0.0;
   private long[] livros;
 
   public Cliente(long idUnico, String nome, String telefone, Date nascimento) {
@@ -78,4 +81,26 @@ public class Cliente implements CheckT {
     return telefone;
   }
 
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+
+    sb.append("\nNome: " + nome + "\n");
+    sb.append("ID: " + idUnico + "\n");
+    sb.append("Telefone: " + telefone + "\n");
+    sb.append("Nascimento: " + sdf.format(nascimento) + "\n");
+    sb.append("Multa: R$" + String.format("%.2f", multa) + "\n");
+
+    if (livros != null) {
+
+      for (int i = 0; i < livros.length - 1; i++) {
+        sb.append("ID do " + (i + 1) + " livro: " + livros[i] + "\n");
+      }
+    } else {
+      sb.append("Cliente não alugou livros.\n");
+    }
+    sb.append("\n");
+
+    return sb.toString();
+  }
 }

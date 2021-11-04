@@ -22,15 +22,16 @@ public class LivroController {
         sc.nextLine();
         String nomeCadastrado = sc.nextLine();
         System.out.print("Digite o(a) autor(a) do livro: ");
-        sc.nextLine();
         String autorCadastrado = sc.nextLine();
         System.out.print("Digite a edição do livro (apenas inteiros): ");
-        sc.nextLine();
         int edicaoCadastrada = sc.nextInt();
 
         Livro novoLivro = new Livro(idCadastrado, nomeCadastrado, autorCadastrado, edicaoCadastrada);
+        estoqueDeLivros.add(novoLivro);
 
-        estoqueDeLivros.add(novoLivro); 
+        System.out.println("Livro cadastrado!");
+        System.out.println();
+
       } else if (choice == 2) {
         System.out.print("Digite o nome do livro: ");
         sc.nextLine();
@@ -43,16 +44,23 @@ public class LivroController {
         }
 
       } else if (choice == 3) {
-        // deletar
+        System.out.print("Digite o nome do livro: ");
+        sc.nextLine();
+        String nomePesquisado = sc.nextLine();
+        Livro livroEncontrado = searchLivro(nomePesquisado);
+        if (livroEncontrado != null) {
+          estoqueDeLivros.remove(livroEncontrado);
+          System.out.println("Livro deletado.");
+        } else {
+          System.out.println("Livro não encontrado.");
+        }
+
       } else if (choice == 4) {
-        sc.close();
         return;
       } else {
         System.out.println("Número inválido, tente novamente");
-        choice = sc.nextInt();
       }
     } while (true);
-
   }
 
   protected Livro searchLivro(String nomePesquisado) {

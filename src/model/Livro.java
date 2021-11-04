@@ -1,8 +1,10 @@
 package model;
 
 import java.util.*;
+import java.text.*;
 
 public class Livro {
+  SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
   private long id;
   private String nome;
   private String autor;
@@ -11,10 +13,14 @@ public class Livro {
   private Date data; // data em que foi alugado
   private final int periodo = 30; // periodo que o livro pode ser alugado em dias
 
-  public long diasDeAtraso() {
-    long diferenca = new Date().getTime() - data.getTime();
-    return (diferenca / (1000 * 60 * 60 * 24)) % 365;
-  }
+  // public long tempoAlugado() {
+  // long diferenca = new Date().getTime() - data.getTime();
+  // return (diferenca / (1000 * 60 * 60 * 24)) % 365;
+  // }
+
+  // public long calculoAtraso(){
+  // long tempo = tempoAlugado() - periodo;
+  // }
 
   // CONSTRUTORES
 
@@ -73,6 +79,25 @@ public class Livro {
 
   public void setData(Date data) {
     this.data = data;
+  }
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+
+    sb.append("\nNome: " + nome + "\n");
+    sb.append("ID: " + id + "\n");
+    sb.append("Autor: " + autor + "\n");
+    sb.append("Edição: " + edicao + "\n");
+
+    if (isAlugado) {
+      sb.append("Livro alugado em: " + sdf.format(data) + "\n");
+    } else {
+      sb.append("Livro não alugado.\n");
+    }
+    sb.append("\n");
+
+    return sb.toString();
   }
 
 }

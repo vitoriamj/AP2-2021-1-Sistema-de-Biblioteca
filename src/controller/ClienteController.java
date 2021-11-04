@@ -11,51 +11,65 @@ public class ClienteController {
     SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     ArrayList<Cliente> listaClientes = new ArrayList<>();
 
-    public ClienteController() {
-        new ClienteMenu();
-        int choice = sc.nextInt();
+    public ClienteController() throws ParseException {
 
         do {
+            new ClienteMenu();
+            int choice = sc.nextInt();
             if (choice == 1) {
-                System.out.print("Digite o ID único do(a) cliente: ");
+                System.out.print("Digite o ID único do(a) cliente (apenas números): ");
                 sc.nextLine();
                 long idCadastrado = sc.nextLong();
                 System.out.print("Digite o nome do(a) cliente: ");
                 sc.nextLine();
                 String nomeCadastrado = sc.nextLine();
                 System.out.print("Digite o telefone do(a) cliente: ");
-                sc.nextLine();
                 String telefoneCadastrado = sc.nextLine();
-                System.out.print("Digite a data de nascimento do(a) cliente: ");
-                sc.nextLine();
+                System.out.print("Digite a data de nascimento do(a) cliente (dd/mm/aaaa): ");
                 Date dataNascCadastrada = sdf.parse(sc.next());
 
                 Cliente novoCliente = new Cliente(idCadastrado, nomeCadastrado, telefoneCadastrado, dataNascCadastrada);
-
                 listaClientes.add(novoCliente);
+
+                System.out.println("Cliente cadastrado!");
+                System.out.println();
+
             } else if (choice == 2) {
                 System.out.print("Digite o nome do(a) cliente: ");
                 sc.nextLine();
                 String nomePesquisado = sc.nextLine();
                 Cliente clienteEncontrado = searchCliente(nomePesquisado);
                 if (clienteEncontrado != null) {
-                System.out.println(clienteEncontrado);
+                    System.out.println(clienteEncontrado);
                 } else {
-                System.out.println("Cliente não encontrado.");
+                    System.out.println("Cliente não encontrado.");
                 }
             } else if (choice == 3) {
-                // deletar
+                System.out.print("Digite o nome do(a) cliente: ");
+                sc.nextLine();
+                String nomePesquisado = sc.nextLine();
+                Cliente clienteEncontrado = searchCliente(nomePesquisado);
+                if (clienteEncontrado != null) {
+                    listaClientes.remove(clienteEncontrado);
+                    System.out.println("Cliente deletado.");
+                } else {
+                    System.out.println("Cliente não encontrado.");
+                }
             } else if (choice == 4) {
-                // emprestimo
-            } else if (choice == 5) {
-                sc.close();
                 return;
             } else {
                 System.out.println("Número inválido, tente novamente");
-                choice = sc.nextInt();
             }
-        } while (choice != 1 && choice != 2 && choice != 3 && choice != 4 && choice != 5);
+        } while (true);
+    }
 
-        sc.close();
+    protected Cliente searchCliente(String nomePesquisado) {
+        for (int i = 0; i <= listaClientes.size() - 1; i++) {
+            Cliente tempCliente = listaClientes.get(i);
+            if (nomePesquisado.equals(tempCliente.getNome())) {
+                return tempCliente;
+            }
+        }
+        return null;
     }
 }
