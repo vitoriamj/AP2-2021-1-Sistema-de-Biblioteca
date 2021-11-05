@@ -10,7 +10,6 @@ O projeto desenvolvido permitirá o cadastro do catálogo e acesso de todos os l
 
 - Atributos:
 
-  - `long` ID único;
   - `String` Nome;
   - `String` Autor;
   - `int` Edição;
@@ -20,37 +19,48 @@ O projeto desenvolvido permitirá o cadastro do catálogo e acesso de todos os l
 
 - Métodos:
   - Getters e setters;
-  - Calcular dias de atraso;
+  
 
 ### Cliente
 
 - Atributos:
 
-  - `long` ID único;
   - `String` Nome;
   - `String` Telefone;
   - `Date` Data de nascimento;
-  - `Double` Multa: R$ 1.00 a cada dia de atraso;
-  - `long array` Livros alugados: array de ID's dos livros;
 
 - Métodos:
   - Getters e setters;
-  - Devolver livro;
-  - Pegar livro;
-  - Calcular multa;
+  - Checagem de telefone;
 
 ---
+### Empréstimo
 
+- Atributos:
+
+  - `Livro` livro;
+  - `Cliente` cliente;
+  - `Date` Data do emprestimo;
+
+- Métodos:
+  - Getters e setters;
+  
+
+---
 ### Interfaces
 
-- Checagem;
-- Método abstrato de avisar quando está próximo do vencimento da data de aluguel;
+- Checagem de telefone;
 
 ### Controller
 
 - CRUD de livros;
 - CRUD de clientes;
 - Utilização dos métodos de clientes e livros;
+- Devolver livro;
+- Pegar livro;
+- Calcular multa;
+- Calcular dias de atraso;
+
 
 ---
 
